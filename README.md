@@ -10,8 +10,21 @@ Returns a JSON object with a list of meta tag (name|property) with the content E
 import {fetchMetadata} from "@/utils/metadata"
 
 export default async function handler({ query, method }, res) {
-	const {url} = query
-	res.status(200).json(await fetchMetadata(url))
+    const {url} = query
+    res.status(200).json(await fetchMetadata(url))
 }
 
+```
+Return example: (/api/metadata?url=https://github.com)
+
+```
+{
+    "apple-itunes-app": "app-id=1477376905",
+    "twitter:description": "GitHub is where over 73 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and feat...",
+    "og:description": "GitHub is where over 73 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and feat...",
+    "visitor-hmac": "56760e48a73e4472cc2fb4df2549d99fe36c87654c079bca3f86fad4714694d8",
+    "github-keyboard-shortcuts": "dashboards",
+    "octolytics-url": "https://collector.githubapp.com/github/collect",
+    "features-datafile": "{&quot;features&quot;:[{&quot;name&quot;:&quot;home_page_globe&quot;,&quot;enabled&quot;:true,&quot;percentageOfActors&quot;:0,&quot;actors&quot;:[]}]}"
+}
 ```
